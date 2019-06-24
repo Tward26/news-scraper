@@ -77,6 +77,11 @@ app.get('/scrape', (req, res) => {
     });
 });
 
+// needs more, placeholder get route
+app.get("/", (req, res) => {
+      res.render("index");
+    });
+
 
 // Start the server
 app.listen(PORT, function() {

@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+    <a class="navbar-brand" href="#">Tabletop News Scraper</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/saved">Saved Articles</a>
+            </li>
+            <li class='nav-item'>
+                <button class='btn btn-dark scrapeArticles mr-1' type='button'>Scrape Articles</button>
+            </li>
+            <li class='nav-item'>
+                <button class='btn btn-dark clearArticles' type='button'>Clear Articles</button>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="jumbotron text-center">
+    <h1>Tabletop News Scraper</h1>
+    <h3>All the latest tabletop news fresh from Bell of Lost Souls</h3>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            {{#if articles}}
+            {{#each articles}}
+            <div class="card mb-2">
+                <div class="card-header">
+                    <h3 style='display: inline'><a href='{{this.link}}' target='_blank'>{{this.title}}</a></h3>
+                    <button class='saveArticle btn btn-success float-right' data-id={{this._id}}>Save Article</button>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{this.summary}}</p>
+                </div>
+            </div>
+            {{/each}}
+            {{else}}
+            <div class="alert alert-warning text-center">
+                <h4>Uh Oh. Looks like we don't have any new articles.</h4>
+            </div>
+            <div class="card">
+                <div class="card-header text-center">
+                    <h3>What Would You Like To Do?</h3>
+                </div>
+                <div class="card-body text-center">
+                    <button class='btn btn-dark scrapeArticles mx-auto' type='button'>Scrape Articles</button>
+                    {{!-- <h4><a class="scrapeArticles">Try Scraping New Articles</a></h4> --}}
+                    <h4><a href="/saved">Go to Saved Articles</a></h4>
+                </div>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</div>
+<script src="/js/index.js"></script>

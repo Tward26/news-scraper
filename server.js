@@ -10,7 +10,7 @@ const exphbs = require('express-handlebars');
 // Require all models
 const db = require('./models');
 
-const PORT = 3000 || process.env.PORT;
+const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/mongoHeadlines';
 
 
